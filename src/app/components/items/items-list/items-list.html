@@ -1,0 +1,52 @@
+<section class="search-toolbar" role="search" aria-label="Catalog search">
+  <div class="search-container">
+    <svg class="search-icon" viewBox="0 0 24 24" aria-hidden="true">
+      <path
+        d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 1 0-.71.71l.27.28v.79L20 21.5 21.5 20l-6-6zM10 15a5 5 0 1 1 0-10 5 5 0 0 1 0 10z"
+      />
+    </svg>
+
+    <input
+      class="search-field"
+      type="search"
+      [value]="q()"
+      (input)="onSearchChange($any($event.target).value)"
+      placeholder="Search catalog by name, brand, or category…"
+      autofocus
+    />
+
+    @if (q()) {
+      <button
+        class="clear-btn"
+        type="button"
+        aria-label="Clear search input"
+        (click)="onSearchChange('')"
+      >
+        ×
+      </button>
+    }
+  </div>
+
+  <span class="search-hint">
+    Server-side search powered by NgRx + Effects. URL synced with <code>?q=</code>.
+  </span>
+</section>
+
+@let items = items$ | async;
+@let loading = loading$ | async;
+@let error = error$ | async;
+
+@if (loading) {
+  <section class="state loading">Loading products…</section>
+} @else if (error) {
+  <section class="state error-message">{{ error }}</section>
+} @else if (items) {
+  <section class="items-grid">
+    @for (it of items; track it.id) {
+      <app-item-card [item]="it"></app-item-card>
+    }
+  </section>
+}
+@if (items && items.length === 0) {
+  <section class="state no-results">No items found matching your search.</section>
+}

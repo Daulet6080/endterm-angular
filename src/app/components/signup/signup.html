@@ -1,0 +1,58 @@
+<section class="auth">
+  <div class="auth__card">
+    <h1 class="auth__title">Create account</h1>
+    <p class="auth__subtitle">
+      Sign up with your email. You’ll use this account to log into ItemsCatalog.
+    </p>
+
+    @if (error()) {
+      <div class="auth__error">
+        {{ error() }}
+      </div>
+    }
+
+    <form (ngSubmit)="submit()" class="auth__form">
+      <label class="auth__field">
+        <span>Email</span>
+        <input
+          type="email"
+          name="email"
+          [(ngModel)]="email"
+          required
+          placeholder="you@example.com"
+        />
+      </label>
+
+      <label class="auth__field">
+        <span>Password</span>
+        <input
+          type="password"
+          name="password"
+          [(ngModel)]="password"
+          required
+          placeholder="At least 6 characters"
+        />
+      </label>
+
+      <label class="auth__field">
+        <span>Confirm password</span>
+        <input
+          type="password"
+          name="confirm"
+          [(ngModel)]="confirm"
+          required
+          placeholder="Repeat password"
+        />
+      </label>
+
+      <button type="submit" [disabled]="loading()" class="auth__button">
+        @if (loading()) { Creating account… } @else { Sign up }
+      </button>
+    </form>
+
+    <p class="auth__hint">
+      Already have an account?
+      <a routerLink="/login">Log in</a>
+    </p>
+  </div>
+</section>

@@ -1,0 +1,45 @@
+<section class="auth">
+  <div class="auth__card">
+    <h1 class="auth__title">Welcome back</h1>
+    <p class="auth__subtitle">Log in with your email and password.</p>
+
+    @if (error()) {
+      <div class="auth__error">
+        {{ error() }}
+      </div>
+    }
+
+    <form (ngSubmit)="submit()" class="auth__form">
+      <label class="auth__field">
+        <span>Email</span>
+        <input
+          type="email"
+          name="email"
+          [(ngModel)]="email"
+          required
+          placeholder="you@example.com"
+        />
+      </label>
+
+      <label class="auth__field">
+        <span>Password</span>
+        <input
+          type="password"
+          name="password"
+          [(ngModel)]="password"
+          required
+          placeholder="••••••••"
+        />
+      </label>
+
+      <button type="submit" [disabled]="loading()" class="auth__button">
+        @if (loading()) { Logging in… } @else { Log in }
+      </button>
+    </form>
+
+    <p class="auth__hint">
+      Don’t have an account?
+      <a routerLink="/signup">Sign up</a>
+    </p>
+  </div>
+</section>

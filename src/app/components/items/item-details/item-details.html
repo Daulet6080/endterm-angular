@@ -1,0 +1,64 @@
+@let item = item$ | async;
+@let loading = loading$ | async;
+@let error = error$ | async;
+
+@if (loading) {
+  <section class="state loading">Loading data…</section>
+} @else if (error) {
+  <section class="state error-message">{{ error }}</section>
+} @else if (item) {
+  <article class="item-details">
+
+    <a class="back-link" routerLink="/items">← Return to Catalog</a>
+
+    <h1 class="details-title">{{ item.title }}</h1>
+
+    <div class="details-layout">
+      <div class="details-media">
+        <img [src]="item.thumbnail" [alt]="item.title" />
+      </div>
+
+      <ul class="details-specs">
+        <li>
+          <span class="label">ID</span>
+          <span class="value">#{{ item.id }}</span>
+        </li>
+        <li>
+          <span class="label">Category</span>
+          <span class="value">{{ item.category }}</span>
+        </li>
+        <li>
+          <span class="label">Brand</span>
+          <span class="value">{{ item.brand || '—' }}</span>
+        </li>
+        <li>
+          <span class="label">Price</span>
+          <span class="value">₸ {{ item.price }}</span>
+        </li>
+        <li>
+          <span class="label">Rating</span>
+          <span class="value">★ {{ item.rating }}</span>
+        </li>
+        <li>
+          <span class="label">Stock</span>
+          <span class="value">{{ item.stock }}</span>
+        </li>
+        <li class="description">
+          <span class="label">Description</span>
+          <p class="value">{{ item.description }}</p>
+        </li>
+      </ul>
+    </div>
+
+    @if (item.images?.length) {
+      <section class="image-gallery">
+        <h3>Photo Gallery</h3>
+        <div class="gallery-images">
+          @for (src of item.images; track src) {
+            <img [src]="src" [alt]="item.title" loading="lazy" />
+          }
+        </div>
+      </section>
+    }
+  </article>
+}

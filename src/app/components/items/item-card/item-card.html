@@ -1,0 +1,22 @@
+<article class="product-card">
+  <a class="image-container" [routerLink]="['/items', item.id]">
+    <img [src]="item.thumbnail" [alt]="item.title" loading="lazy" />
+  </a>
+
+  <div class="card-body">
+    <h3 class="card-title">
+      <a class="title-link" [routerLink]="['/items', item.id]">{{ item.title }}</a>
+    </h3>
+
+    <p class="card-description">{{ item.description | slice:0:75 }}…</p>
+
+    <div class="card-meta">
+      <span class="price">₸ {{ item.price }}</span>
+      <span class="rating">★ {{ item.rating }}</span>
+    </div>
+
+    <div class="card-actions">
+      <a class="btn details-btn" [routerLink]="['/items', item.id]">View Details</a>
+    </div>
+  </div>
+</article>

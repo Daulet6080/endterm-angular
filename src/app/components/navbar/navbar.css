@@ -1,0 +1,47 @@
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 1rem;
+  background: #0b1225;
+  color: #fff;
+  border-bottom: 1px solid #101827;
+}
+
+.nav a { color: #fff; text-decoration: none; }
+
+.nav .brand a {
+  font-weight: 800;
+  letter-spacing: .2px;
+  color: var(--primary);
+}
+
+.nav ul {
+  display: flex;
+  gap: 1.25rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav ul a {
+  opacity: .9;
+  padding: .25rem .25rem;
+  border-radius: 6px;
+  transition: opacity .15s ease, background .15s ease;
+}
+.nav ul a:hover { opacity: 1; background: rgba(255,255,255,.06); }
+
+.active {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.nav-link-button {
+  background: none;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  padding: 0;
+  font: inherit;
+}
+.nav-link-button:hover { text-decoration: underline; }

@@ -1,0 +1,112 @@
+/* Используем те же базовые стили, что и у Login */
+
+.auth {
+  min-height: calc(100vh - 60px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1rem;
+}
+
+.auth__card {
+  width: 100%;
+  max-width: 420px;
+  padding: 2rem 2.25rem;
+  border-radius: 18px;
+  border: 1px solid #e5e7eb;
+  background: #ffffff;
+  box-shadow:
+    0 18px 45px rgba(15, 23, 42, 0.12),
+    0 0 0 1px rgba(148, 163, 184, 0.08);
+}
+
+.auth__title {
+  font-size: 1.7rem;
+  margin-bottom: 0.35rem;
+}
+
+.auth__subtitle {
+  margin: 0 0 1.5rem;
+  font-size: 0.95rem;
+  color: #6b7280;
+}
+
+.auth__error {
+  margin-bottom: 1rem;
+  padding: 0.65rem 0.75rem;
+  border-radius: 10px;
+  background: #fef2f2;
+  color: #b91c1c;
+  font-size: 0.9rem;
+  border: 1px solid #fecaca;
+}
+
+.auth__form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+.auth__field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  font-size: 0.9rem;
+  color: #4b5563;
+}
+
+.auth__field input {
+  padding: 0.55rem 0.75rem;
+  border-radius: 10px;
+  border: 1px solid #d1d5db;
+  font-size: 0.95rem;
+  outline: none;
+  transition: border-color 0.12s ease, box-shadow 0.12s ease;
+}
+
+.auth__field input:focus {
+  border-color: #111827;
+  box-shadow: 0 0 0 1px #1118271a;
+}
+
+.auth__button {
+  margin-top: 0.4rem;
+  padding: 0.6rem 0.9rem;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 0.95rem;
+  background: var(--primary, #111827);
+  color: #ffffff;
+  transition: transform 0.08s ease, box-shadow 0.08s ease,
+  background-color 0.1s ease;
+}
+
+.auth__button:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 25px rgba(15, 23, 42, 0.3);
+}
+
+.auth__button:disabled {
+  opacity: 0.75;
+  cursor: default;
+  box-shadow: none;
+}
+
+.auth__hint {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  color: #6b7280;
+  text-align: center;
+}
+
+.auth__hint a {
+  color: #111827;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.auth__hint a:hover {
+  text-decoration: underline;
+}
