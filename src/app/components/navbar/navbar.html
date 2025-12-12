@@ -1,20 +1,25 @@
 <nav class="nav">
-  <div class="brand"><a routerLink="/">ItemsCatalog</a></div>
+  <div class="brand"><a routerLink="/">AngularShop</a></div>
   <ul>
-    <li><a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Home</a></li>
+    <li>
+      <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"
+        >Home</a
+      >
+    </li>
     <li><a routerLink="/about" routerLinkActive="active">About</a></li>
     <li><a routerLink="/items" routerLinkActive="active">Items</a></li>
 
     @if (user$ | async; as user) {
-
-      <li><a routerLink="/profile" routerLinkActive="active">Profile</a></li>
-      <li>
-        <button type="button" class="nav-link-button" (click)="logout()">Logout</button>
-      </li>
+    <li><a routerLink="/favorites" routerLinkActive="active">Избранное</a></li>
+    <li class="nav__profile-item">
+      <a routerLink="/profile" routerLinkActive="active" class="nav__profile-link"> Profile </a>
+    </li>
+    <li>
+      <button type="button" class="nav-link-button" (click)="logout()">Logout</button>
+    </li>
     } @else {
-
-      <li><a routerLink="/login" routerLinkActive="active">Login</a></li>
-      <li><a routerLink="/signup" routerLinkActive="active">Signup</a></li>
+    <li><a routerLink="/login" routerLinkActive="active">Login</a></li>
+    <li><a routerLink="/signup" routerLinkActive="active">Signup</a></li>
     }
   </ul>
 </nav>

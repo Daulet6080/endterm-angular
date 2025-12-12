@@ -1,0 +1,55 @@
+@if (user()) {
+<section class="favorites">
+  <div class="favorites__header">
+    <h1 class="favorites__title">Избранное</h1>
+    <p class="favorites__subtitle">Ваши сохраненные товары</p>
+  </div>
+
+  @if (isLoading()) {
+  <div class="favorites__loading">
+    <div class="favorites__spinner"></div>
+    <p>Загрузка избранного...</p>
+  </div>
+  } @else if (favorites().length === 0) {
+  <div class="favorites__empty">
+    <svg class="favorites__empty-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
+      ></path>
+    </svg>
+    <h2 class="favorites__empty-title">Нет избранных товаров</h2>
+    <p class="favorites__empty-text">
+      Начните добавлять товары в избранное, нажимая на иконку сердца на карточках товаров
+    </p>
+    <button type="button" class="favorites__empty-btn" (click)="navigateToItems()">
+      Перейти к каталогу
+    </button>
+  </div>
+  } @else {
+  <div class="favorites__grid">
+    @for (item of favorites(); track item.id) {
+    <app-item-card [item]="item"></app-item-card>
+    }
+  </div>
+  }
+</section>
+} @else {
+<section class="favorites">
+  <div class="favorites__auth-required">
+    <svg class="favorites__auth-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
+      ></path>
+    </svg>
+    <h2 class="favorites__auth-title">Требуется авторизация</h2>
+    <p class="favorites__auth-text">Войдите в систему, чтобы просматривать избранные товары</p>
+    <a routerLink="/login" class="favorites__auth-btn">Войти</a>
+  </div>
+</section>
+}

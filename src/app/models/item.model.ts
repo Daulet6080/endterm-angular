@@ -3,10 +3,14 @@ export interface Item {
   title: string;
   description: string;
   price: number;
-  rating: number;
   category: string;
+  image: string;
+  rating: {
+    rate: number;
+    count: number;
+  };
+  thumbnail?: string;
   brand?: string;
-  thumbnail: string;
-  images?: string[];
   stock?: number;
+  images?: string[];
 }

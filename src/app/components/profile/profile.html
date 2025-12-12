@@ -1,33 +1,127 @@
 @if (user()) {
-  <section class="profile">
-    <h1 class="profile__title">My profile</h1>
+<section class="profile">
+  <div class="profile__header">
+    <h1 class="profile__title">My Profile</h1>
+    <p class="profile__subtitle">Manage your account settings and profile picture</p>
+  </div>
 
-    <div class="profile__card">
-      <div class="profile__avatar">
-        {{ user()?.email?.charAt(0) | uppercase }}
+  <div class="profile__card">
+    <div class="profile__avatar-section">
+      <div class="profile__avatar-wrapper">
+        @if (getProfilePictureUrl()) {
+        <img [src]="getProfilePictureUrl()!" alt="Profile picture" class="profile__avatar-image" />
+        } @else {
+        <div class="profile__avatar">
+          {{ getInitials() }}
+        </div>
+        }
+        <div class="profile__avatar-overlay">
+          <label for="profile-picture-input" class="profile__upload-label">
+            @if (isUploading()) {
+            <span class="profile__upload-spinner"></span>
+            } @else {
+            <svg class="profile__upload-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"
+              ></path>
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"
+              ></path>
+            </svg>
+            }
+          </label>
+          <input
+            id="profile-picture-input"
+            type="file"
+            accept="image/jpeg,image/jpg,image/png"
+            class="profile__file-input"
+            (change)="onFileSelected($event)"
+            [disabled]="isUploading()"
+          />
+        </div>
       </div>
+      <p class="profile__avatar-hint">Click to upload a new profile picture</p>
+      <p class="profile__avatar-formats">JPG or PNG, max 10MB</p>
+    </div>
 
-      <div class="profile__info">
+    <div class="profile__info">
+      <div class="profile__info-section">
+        <h2 class="profile__section-title">Account Information</h2>
+
         <div class="profile__row">
-          <span class="profile__label">Email</span>
+          <span class="profile__label">
+            <svg class="profile__icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207"
+              ></path>
+            </svg>
+            Email
+          </span>
           <span class="profile__value">{{ user()?.email }}</span>
         </div>
 
         <div class="profile__row">
-          <span class="profile__label">UID</span>
+          <span class="profile__label">
+            <svg class="profile__icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"
+              ></path>
+            </svg>
+            User ID
+          </span>
           <span class="profile__value profile__value--code">
             {{ user()?.uid }}
           </span>
         </div>
       </div>
-    </div>
 
-    <div class="profile__actions">
-      <button type="button" (click)="logout()">Logout</button>
+      @if (uploadError()) {
+      <div class="profile__error">
+        <svg class="profile__error-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+          ></path>
+        </svg>
+        {{ uploadError() }}
+      </div>
+      }
     </div>
-  </section>
+  </div>
+
+  <div class="profile__actions">
+    <button type="button" class="profile__logout-btn" (click)="logout()">
+      <svg class="profile__logout-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"
+        ></path>
+      </svg>
+      Logout
+    </button>
+  </div>
+</section>
 } @else {
-  <section class="profile">
+<section class="profile">
+  <div class="profile__loading">
+    <div class="profile__loading-spinner"></div>
     <p>Loading user...</p>
-  </section>
+  </div>
+</section>
 }

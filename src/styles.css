@@ -1,14 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
 /* main.css */
-
+@import 'tailwindcss';
 /* Сброс базовых стилей */
 * {
-  margin: 0;
-  padding: 0;
   box-sizing: border-box;
 }
 
-html, body {
+html,
+body {
   height: 100%;
   font-family: 'Inter', Arial, sans-serif;
   background-color: #f9fafb;
@@ -17,7 +16,7 @@ html, body {
 
 /* Главный контейнер приложения */
 #app-container {
-  max-width: 1200px;
+  max-width: 1280px;
   margin: 0 auto;
   padding: 1rem 1.5rem;
   display: flex;
@@ -26,7 +25,12 @@ html, body {
 }
 
 /* Основные типографические элементы */
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-weight: 600;
   color: #111827;
   margin-bottom: 0.5rem;
@@ -50,7 +54,8 @@ a:hover {
 }
 
 /* Кнопки */
-button, .btn {
+button,
+.btn {
   display: inline-block;
   padding: 0.5rem 1rem;
   border: none;
@@ -62,7 +67,8 @@ button, .btn {
   transition: background-color 0.2s;
 }
 
-button:hover, .btn:hover {
+button:hover,
+.btn:hover {
   background-color: #2563eb;
 }
 
@@ -89,13 +95,15 @@ button:hover, .btn:hover {
 }
 
 /* Галерея изображений */
-.images, .gallery-images {
+.images,
+.gallery-images {
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
 }
 
-.images img, .gallery-images img {
+.images img,
+.gallery-images img {
   max-width: 100%;
   border-radius: 8px;
   object-fit: cover;
@@ -108,7 +116,8 @@ button:hover, .btn:hover {
   margin-bottom: 1rem;
 }
 
-.search-input, .search-field {
+.search-input,
+.search-field {
   width: 100%;
   padding: 0.5rem 2.5rem;
   border: 2px solid #d1d5db;
@@ -116,7 +125,8 @@ button:hover, .btn:hover {
   font-size: 1rem;
 }
 
-.icon, .search-icon {
+.icon,
+.search-icon {
   position: absolute;
   left: 0.6rem;
   top: 50%;
@@ -127,7 +137,8 @@ button:hover, .btn:hover {
   pointer-events: none;
 }
 
-.clear, .clear-btn {
+.clear,
+.clear-btn {
   position: absolute;
   right: 0.6rem;
   top: 50%;
@@ -144,10 +155,14 @@ button:hover, .btn:hover {
   cursor: pointer;
 }
 
-.clear:hover, .clear-btn:hover { background: #f8fafc; }
+.clear:hover,
+.clear-btn:hover {
+  background: #f8fafc;
+}
 
 /* Подсказка поиска */
-.hint, .search-hint {
+.hint,
+.search-hint {
   font-size: 0.875rem;
   color: #64748b;
   margin-top: 0.25rem;

@@ -1,11 +1,11 @@
 export const environment = {
   firebase: {
-    apiKey: "AIzaSyCgZuJNvdPY3_lPAXAzi2t3lhl9nDWQVgI",
-    authDomain: "web-rep.firebaseapp.com",
-    projectId: "web-rep",
-    storageBucket: "web-rep.firebasestorage.app",
-    messagingSenderId: "57582887658",
-    appId: "1:57582887658:web:610f4590e28a23621cad93",
-    measurementId: "G-NVZDDVHLDM"
+     apiKey: "AIzaSyAAFgXNRp86VFuZQtyx9ZjdpJ3eaXYW_-A",
+  authDomain: "angularhw7.firebaseapp.com",
+  projectId: "angularhw7",
+  storageBucket: "angularhw7.firebasestorage.app",
+  messagingSenderId: "891639012004",
+  appId: "1:891639012004:web:128ccf436616800945a431",
+  measurementId: "G-BZNRXFM94C"
   }
 };

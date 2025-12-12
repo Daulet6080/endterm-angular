@@ -6,6 +6,7 @@ import { ItemDetails } from './components/items/item-details/item-details';
 import { Login } from './components/login/login';
 import { Signup } from './components/signup/signup';
 import { Profile } from './components/profile/profile';
+import { Favorites } from './components/favorites/favorites';
 import { authGuard } from './guards/auth.guard';
 
 export const routes: Routes = [
@@ -16,5 +17,6 @@ export const routes: Routes = [
   { path: 'login', component: Login, title: 'Login' },
   { path: 'signup', component: Signup, title: 'Sign Up' },
   { path: 'profile', component: Profile, canActivate: [authGuard], title: 'Profile' },
+  { path: 'favorites', component: Favorites, canActivate: [authGuard], title: 'Favorites' },
   { path: '**', redirectTo: '' },
 ];

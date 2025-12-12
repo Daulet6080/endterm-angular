@@ -8,11 +8,14 @@
   border-bottom: 1px solid #101827;
 }
 
-.nav a { color: #fff; text-decoration: none; }
+.nav a {
+  color: #fff;
+  text-decoration: none;
+}
 
 .nav .brand a {
   font-weight: 800;
-  letter-spacing: .2px;
+  letter-spacing: 0.2px;
   color: var(--primary);
 }
 
@@ -25,12 +28,14 @@
 }
 
 .nav ul a {
-  opacity: .9;
-  padding: .25rem .25rem;
+  opacity: 0.9;
   border-radius: 6px;
-  transition: opacity .15s ease, background .15s ease;
+  transition: opacity 0.15s ease, background 0.15s ease;
 }
-.nav ul a:hover { opacity: 1; background: rgba(255,255,255,.06); }
+.nav ul a:hover {
+  opacity: 1;
+  background: rgba(255, 255, 255, 0.06);
+}
 
 .active {
   text-decoration: underline;
@@ -44,4 +49,55 @@
   padding: 0;
   font: inherit;
 }
-.nav-link-button:hover { text-decoration: underline; }
+.nav-link-button:hover {
+  text-decoration: underline;
+}
+
+.nav__profile-item {
+  display: flex;
+  align-items: center;
+}
+
+.nav__profile-link {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-radius: 8px;
+  transition: background 0.15s ease;
+}
+
+.nav__profile-link:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.nav__profile-picture {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.nav__profile-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 0.875rem;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.nav__profile-text {
+  font-size: 0.95rem;
+}
+
+@media (max-width: 768px) {
+  .nav__profile-text {
+    display: none;
+  }
+}

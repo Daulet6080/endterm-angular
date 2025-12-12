@@ -1,14 +1,68 @@
 <article class="product-card">
-  <a class="image-container" [routerLink]="['/items', item.id]">
-    <img [src]="item.thumbnail" [alt]="item.title" loading="lazy" />
-  </a>
+  <div class="product-card__image-wrapper">
+    <a class="" [routerLink]="['/items', item.id]">
+      <img [src]="item.image" class="aspect-3/4 h-[400px]!" [alt]="item.title" loading="lazy" />
+    </a>
+    @if (user()) {
+    <button
+      type="button"
+      class="favorite-btn"
+      [class.favorite-btn--active]="isFavorite()"
+      [class.favorite-btn--loading]="isToggling()"
+      (click)="toggleFavorite($event)"
+      [attr.aria-label]="isFavorite() ? 'Удалить из избранного' : 'Добавить в избранное'"
+      title="{{ isFavorite() ? 'Удалить из избранного' : 'Добавить в избранное' }}"
+    >
+      @if (isToggling()) {
+      <svg class="favorite-btn__spinner" fill="none" viewBox="0 0 24 24">
+        <circle
+          class="favorite-btn__spinner-circle"
+          cx="12"
+          cy="12"
+          r="10"
+          stroke="currentColor"
+          stroke-width="4"
+          fill="none"
+          opacity="0.25"
+        />
+        <path
+          class="favorite-btn__spinner-path"
+          d="M12 2a10 10 0 0 1 10 10"
+          stroke="currentColor"
+          stroke-width="4"
+          fill="none"
+        />
+      </svg>
+      } @else {
+      <svg class="favorite-btn__icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        @if (isFavorite()) {
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
+          fill="currentColor"
+        />
+        } @else {
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
+        />
+        }
+      </svg>
+      }
+    </button>
+    }
+  </div>
 
   <div class="card-body">
     <h3 class="card-title">
       <a class="title-link" [routerLink]="['/items', item.id]">{{ item.title }}</a>
     </h3>
 
-    <p class="card-description">{{ item.description | slice:0:75 }}…</p>
+    <p class="card-description">{{ item.description | slice : 0 : 75 }}…</p>
 
     <div class="card-meta">
       <span class="price">₸ {{ item.price }}</span>

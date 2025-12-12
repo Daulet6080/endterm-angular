@@ -16,14 +16,14 @@
     />
 
     @if (q()) {
-      <button
-        class="clear-btn"
-        type="button"
-        aria-label="Clear search input"
-        (click)="onSearchChange('')"
-      >
-        ×
-      </button>
+    <button
+      class="clear-btn"
+      type="button"
+      aria-label="Clear search input"
+      (click)="onSearchChange('')"
+    >
+      ×
+    </button>
     }
   </div>
 
@@ -32,21 +32,17 @@
   </span>
 </section>
 
-@let items = items$ | async;
-@let loading = loading$ | async;
-@let error = error$ | async;
-
-@if (loading) {
-  <section class="state loading">Loading products…</section>
+@let items = items$ | async; @let loading = loading$ | async; @let error = error$ | async; @if
+(loading) {
+<section class="state loading">Loading products…</section>
 } @else if (error) {
-  <section class="state error-message">{{ error }}</section>
+<section class="state error-message">{{ error }}</section>
 } @else if (items) {
-  <section class="items-grid">
-    @for (it of items; track it.id) {
-      <app-item-card [item]="it"></app-item-card>
-    }
-  </section>
-}
-@if (items && items.length === 0) {
-  <section class="state no-results">No items found matching your search.</section>
+<section class="grid grid-cols-4 gap-3 mt-10">
+  @for (it of items; track it.id) {
+  <app-item-card [item]="it"></app-item-card>
+  }
+</section>
+} @if (items && items.length === 0) {
+<section class="state no-results">No items found matching your search.</section>
 }
